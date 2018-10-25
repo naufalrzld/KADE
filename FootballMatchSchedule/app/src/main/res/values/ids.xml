@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="spinner" type="id"/>
+    <item name="swipe" type="id"/>
+    <item name="rvListMatch" type="id"/>
+    <item name="progress_bar" type="id"/>
+</resources>
