@@ -10,19 +10,16 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class LastMatchFragmentUI : AnkoComponent<ViewGroup> {
-    override fun createView(ui: AnkoContext<ViewGroup>): View {
+class MatchFragmentUI<T> : AnkoComponent<T> {
+    override fun createView(ui: AnkoContext<T>): View {
         return with(ui) {
             linearLayout {
-                lparams (width = matchParent, height = wrapContent)
+                lparams (width = matchParent)
                 orientation = LinearLayout.VERTICAL
                 topPadding = dip(16)
                 leftPadding = dip(16)
                 rightPadding = dip(16)
 
-                spinner {
-                    id = R.id.spinner
-                }.lparams(width = matchParent, height = wrapContent)
                 swipeRefreshLayout {
                     id = R.id.swipe
                     setColorSchemeResources(colorAccent,
@@ -30,20 +27,10 @@ class LastMatchFragmentUI : AnkoComponent<ViewGroup> {
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)
 
-                    relativeLayout{
+                    recyclerView {
                         lparams (width = matchParent, height = wrapContent)
-
-                        recyclerView {
-                            lparams (width = matchParent, height = wrapContent)
-                            id = R.id.rvListMatch
-                            layoutManager = LinearLayoutManager(context)
-                        }
-
-                        progressBar {
-                            id = R.id.progress_bar
-                        }.lparams{
-                            centerHorizontally()
-                        }
+                        id = R.id.rvListMatch
+                        layoutManager = LinearLayoutManager(context)
                     }
                 }
             }

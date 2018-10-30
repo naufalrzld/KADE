@@ -4,4 +4,9 @@
     <item name="swipe" type="id"/>
     <item name="rvListMatch" type="id"/>
     <item name="progress_bar" type="id"/>
+    <item name="date" type="id"/>
+    <item name="team1" type="id"/>
+    <item name="team2" type="id"/>
+    <item name="score1" type="id"/>
+    <item name="score2" type="id"/>
 </resources>
