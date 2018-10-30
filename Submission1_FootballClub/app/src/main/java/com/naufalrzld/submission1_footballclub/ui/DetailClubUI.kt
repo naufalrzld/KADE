@@ -1,6 +1,7 @@
 package com.naufalrzld.submission1_footballclub.ui
 
 import android.view.Gravity
+import com.bumptech.glide.Glide
 import com.naufalrzld.submission1_footballclub.DetailClubActivity
 import com.naufalrzld.submission1_footballclub.data.Item
 import com.naufalrzld.submission1_footballclub.R
@@ -13,7 +14,7 @@ class DetailClubUI(val item: Item) : AnkoComponent<DetailClubActivity> {
 
             imageView {
                 id = R.id.image
-                item.image?.let { setImageResource(it) }
+                Glide.with(context).load(item.image).into(this)
             }.lparams(width = dip(100), height = dip(100)) {
                 gravity = Gravity.CENTER_HORIZONTAL
             }
