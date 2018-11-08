@@ -9,4 +9,6 @@
     <item name="team2" type="id"/>
     <item name="score1" type="id"/>
     <item name="score2" type="id"/>
+    <item name="dateNextMatch" type="id"/>
+    <item name="dateLastMatch" type="id"/>
 </resources>
