@@ -1,8 +1,8 @@
-package com.naufalrzld.footballclub.main
+package com.naufalrzld.footballclub.teams
 
 import com.naufalrzld.footballclub.model.Team
 
-interface MainView {
+interface TeamsView {
     fun showLoading()
     fun hideLoading()
     fun showTeamList(data: List<Team>)

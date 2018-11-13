@@ -1,4 +1,4 @@
-package com.naufalrzld.footballclub.main
+package com.naufalrzld.footballclub.teams
 
 import com.google.gson.Gson
 import com.naufalrzld.footballclub.api.ApiRepository
@@ -7,9 +7,9 @@ import com.naufalrzld.footballclub.model.TeamResponse
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-class MainPresenter(private val view: MainView,
-                    private val apiRepository: ApiRepository,
-                    private val gson: Gson) {
+class TeamsPresenter(private val view: TeamsView,
+                     private val apiRepository: ApiRepository,
+                     private val gson: Gson) {
     fun getTeamList(league: String?) {
         view.showLoading()
         doAsync {
