@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.naufalrzld.footballmatchschedule.DetailActivity
+import com.naufalrzld.footballmatchschedule.detail.DetailActivity
 import com.naufalrzld.footballmatchschedule.R.id.rvListMatch
 import com.naufalrzld.footballmatchschedule.R.id.swipe
 import com.naufalrzld.footballmatchschedule.adapter.LastMatchAdapter
@@ -23,7 +23,6 @@ import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.intentFor
 import org.jetbrains.anko.support.v4.onRefresh
-import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
