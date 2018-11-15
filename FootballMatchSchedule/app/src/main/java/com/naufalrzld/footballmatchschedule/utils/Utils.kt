@@ -1,4 +1,4 @@
-package com.naufalrzld.footballmatchschedule
+package com.naufalrzld.footballmatchschedule.utils
 
 import android.view.View
 

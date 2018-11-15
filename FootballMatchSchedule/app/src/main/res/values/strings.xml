@@ -11,4 +11,6 @@
     <string name="substitutes">Substitutes</string>
     <string name="vs">VS</string>
     <string name="detail_activity">Match Detail</string>
+    <string name="favorites">Favorites</string>
+    <string name="next_match">Next Match</string>
 </resources>
