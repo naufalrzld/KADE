@@ -1,6 +1,5 @@
 package com.naufalrzld.footballclub.fragment
 
-import android.R
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.google.gson.Gson
+import com.naufalrzld.footballclub.R
 import com.naufalrzld.footballclub.R.array.league
 import com.naufalrzld.footballclub.R.color.colorAccent
 import com.naufalrzld.footballclub.api.ApiRepository
@@ -43,7 +43,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
 
 
         val spinnerItems = resources.getStringArray(league)
-        val spinnerAdapter = ArrayAdapter(ctx, R.layout.simple_spinner_dropdown_item, spinnerItems)
+        val spinnerAdapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
         spinner.adapter = spinnerAdapter
 
         adapter = TeamsAdapter(teams) {
@@ -91,6 +91,7 @@ class TeamsFragment : Fragment(), AnkoComponent<Context>, TeamsView {
                     lparams (width = matchParent, height = wrapContent)
 
                     listEvent = recyclerView {
+                        id = R.id.list_team
                         lparams (width = matchParent, height = wrapContent)
                         layoutManager = LinearLayoutManager(ctx)
                     }
