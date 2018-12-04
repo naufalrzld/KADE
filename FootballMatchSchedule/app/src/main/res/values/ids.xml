@@ -11,4 +11,7 @@
     <item name="score2" type="id"/>
     <item name="dateNextMatch" type="id"/>
     <item name="dateLastMatch" type="id"/>
+    <item name="list_team" type="id"/>
+    <item name="team_name" type="id"/>
+    <item name="team_badge" type="id"/>
 </resources>

@@ -1,4 +1,4 @@
-package com.naufalrzld.footballmatchschedule.fragment
+package com.naufalrzld.footballmatchschedule.fragment.last_match
 
 
 import android.os.Bundle
@@ -9,10 +9,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.naufalrzld.footballmatchschedule.R
+import com.naufalrzld.footballmatchschedule.R.id.*
 import com.naufalrzld.footballmatchschedule.detail.DetailActivity
-import com.naufalrzld.footballmatchschedule.R.id.rvListMatch
-import com.naufalrzld.footballmatchschedule.R.id.swipe
 import com.naufalrzld.footballmatchschedule.adapter.LastMatchAdapter
+import com.naufalrzld.footballmatchschedule.fragment.MatchView
 import com.naufalrzld.footballmatchschedule.model.MatchModel
 
 import com.naufalrzld.footballmatchschedule.ui.MatchFragmentUI
@@ -32,17 +35,20 @@ class LastMatchFragment : Fragment(), MatchView {
 
     private lateinit var presenter: LastMatchPresenter
     private lateinit var adapter: LastMatchAdapter
+    private lateinit var spinner: Spinner
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = MatchFragmentUI<Fragment>().createView(AnkoContext.create(context!!, this))
+        val view = MatchFragmentUI<Fragment>(0).createView(AnkoContext.create(context!!, this))
         swipeRefresh = view.find(swipe)
         rvList = view.find(rvListMatch)
+        spinner = view.find(R.id.spinner)
 
         presenter = LastMatchPresenter(this)
+        presenter.getLiga(view.context)
         presenter.getMatch()
 
         swipeRefresh.onRefresh {
@@ -63,9 +69,13 @@ class LastMatchFragment : Fragment(), MatchView {
     }
 
     override fun showData(data: List<MatchModel>) {
-        adapter = LastMatchAdapter(context!!, data) {
+        adapter = LastMatchAdapter(data) {
             startActivity(intentFor<DetailActivity>("data" to it))
         }
         rvList.adapter = adapter
+    }
+
+    override fun setSpinner(adapter: ArrayAdapter<String>) {
+        spinner.adapter = adapter
     }
 }

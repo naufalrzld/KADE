@@ -1,6 +1,7 @@
 package com.naufalrzld.footballmatchschedule.fragment
 
 import android.util.Log
+import com.naufalrzld.footballmatchschedule.fragment.last_match.LastMatchPresenter
 import com.naufalrzld.footballmatchschedule.model.MatchModel
 import com.naufalrzld.footballmatchschedule.model.MatchResponse
 import com.naufalrzld.footballmatchschedule.service.RetrofitService

@@ -1,6 +1,10 @@
-package com.naufalrzld.footballmatchschedule.fragment
+package com.naufalrzld.footballmatchschedule.fragment.last_match
 
+import android.content.Context
 import android.util.Log
+import android.widget.ArrayAdapter
+import com.naufalrzld.footballmatchschedule.R
+import com.naufalrzld.footballmatchschedule.fragment.MatchView
 import com.naufalrzld.footballmatchschedule.model.MatchModel
 import com.naufalrzld.footballmatchschedule.model.MatchResponse
 import com.naufalrzld.footballmatchschedule.service.RetrofitService
@@ -64,4 +68,10 @@ class LastMatchPresenter(private val view : MatchView) {
         }
     }
 
+
+    fun getLiga(context: Context) {
+        val spinnerItems = context.resources.getStringArray(R.array.league)
+        val spinnerAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+        view.setSpinner(spinnerAdapter)
+    }
 }

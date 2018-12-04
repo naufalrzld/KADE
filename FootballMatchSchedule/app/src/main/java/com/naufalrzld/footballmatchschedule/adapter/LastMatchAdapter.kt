@@ -1,6 +1,5 @@
 package com.naufalrzld.footballmatchschedule.adapter
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,11 @@ import com.naufalrzld.footballmatchschedule.ui.LastMatchItemUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.find
 
-class LastMatchAdapter(private val context: Context, private val events: List<MatchModel>,
+class LastMatchAdapter(private val events: List<MatchModel>,
                        private val listener: (MatchModel) -> Unit):
         RecyclerView.Adapter<LastMatchAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(LastMatchItemUI().createView(AnkoContext.create(context, parent)))
+        ViewHolder(LastMatchItemUI().createView(AnkoContext.create(parent.context, parent)))
 
     override fun getItemCount() = events.size
 

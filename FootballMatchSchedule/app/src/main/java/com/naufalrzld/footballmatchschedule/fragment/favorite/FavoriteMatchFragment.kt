@@ -1,4 +1,4 @@
-package com.naufalrzld.footballmatchschedule.fragment
+package com.naufalrzld.footballmatchschedule.fragment.favorite
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.naufalrzld.footballmatchschedule.R
-import com.naufalrzld.footballmatchschedule.adapter.FavoriteMatchAdapter
 import com.naufalrzld.footballmatchschedule.adapter.LastMatchAdapter
 import com.naufalrzld.footballmatchschedule.detail.DetailActivity
 import com.naufalrzld.footballmatchschedule.model.MatchModel
@@ -19,52 +18,58 @@ import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.find
+import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.intentFor
 import org.jetbrains.anko.support.v4.onRefresh
 
-class FavoriteMatchFragment : Fragment() {
+class FavoriteMatchFragment : Fragment(), FavoriteMatchView {
+
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
     private var events: MutableList<MatchModel> = mutableListOf()
     private lateinit var adapter: LastMatchAdapter
+    private lateinit var rvList: RecyclerView
+    private lateinit var presenter: FavoriteMatchPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = MatchFragmentUI<Fragment>().createView(AnkoContext.create(context!!, this))
+        val view = MatchFragmentUI<Fragment>(1).createView(AnkoContext.create(ctx, this))
         swipeRefresh = view.find(R.id.swipe)
-        val rvList: RecyclerView = view.find(R.id.rvListMatch)
+        rvList = view.find(R.id.rvListMatch)
+
+        presenter = FavoriteMatchPresenter(this, context)
 
         swipeRefresh.onRefresh {
-            showFavorite()
+            presenter.loadFavorite()
         }
 
         rvList.layoutManager = LinearLayoutManager(context)
-        adapter = LastMatchAdapter(context!!, events) {
-            startActivity(intentFor<DetailActivity>("data" to it))
-        }
-        rvList.adapter = adapter
 
-        showFavorite()
+        presenter.loadFavorite()
 
         return view
     }
 
-    private fun showFavorite(){
-        events.clear()
-        context?.database?.use {
-            swipeRefresh.isRefreshing = false
-            val result = select(MatchModel.TABLE_FAVORITE)
-            val favorite = result.parseList(classParser<MatchModel>())
-            events.addAll(favorite)
-            adapter.notifyDataSetChanged()
-        }
-    }
-
     override fun onResume() {
         super.onResume()
-        showFavorite()
+        presenter.loadFavorite()
+    }
+
+    override fun showFavorites(events: List<MatchModel>) {
+        adapter = LastMatchAdapter(events) {
+            startActivity(intentFor<DetailActivity>("data" to it))
+        }
+        rvList.adapter = adapter
+    }
+
+    override fun showLoading() {
+        swipeRefresh.isRefreshing = true
+    }
+
+    override fun hideLoading() {
+        swipeRefresh.isRefreshing = false
     }
 }

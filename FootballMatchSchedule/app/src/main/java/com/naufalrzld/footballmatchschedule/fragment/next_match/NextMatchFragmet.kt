@@ -1,4 +1,4 @@
-package com.naufalrzld.footballmatchschedule.fragment
+package com.naufalrzld.footballmatchschedule.fragment.next_match
 
 
 import android.os.Bundle
@@ -9,9 +9,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.naufalrzld.footballmatchschedule.R
 import com.naufalrzld.footballmatchschedule.detail.DetailActivity
 import com.naufalrzld.footballmatchschedule.R.id.*
 import com.naufalrzld.footballmatchschedule.adapter.NextMatchAdapter
+import com.naufalrzld.footballmatchschedule.fragment.MatchView
 import com.naufalrzld.footballmatchschedule.model.MatchModel
 
 import com.naufalrzld.footballmatchschedule.ui.MatchFragmentUI
@@ -25,6 +29,7 @@ class NextMatchFragmet : Fragment(), MatchView {
     private lateinit var presenter: NextMatchPresenter
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var rvList: RecyclerView
+    private lateinit var spinner: Spinner
 
     private var adapter: NextMatchAdapter? = null
 
@@ -33,12 +38,13 @@ class NextMatchFragmet : Fragment(), MatchView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = MatchFragmentUI<Fragment>().createView(AnkoContext.create(context!!, this))
+        val view = MatchFragmentUI<Fragment>(0).createView(AnkoContext.create(context!!, this))
         swipeRefresh = view.find(swipe)
         rvList = view.find(rvListMatch)
+        spinner = view.find(R.id.spinner)
 
         presenter = NextMatchPresenter(this)
-
+        presenter.getLiga(context)
         presenter.getMatch()
 
         swipeRefresh.onRefresh { presenter.getMatch() }
@@ -62,5 +68,9 @@ class NextMatchFragmet : Fragment(), MatchView {
         }
 
         rvList.adapter = adapter
+    }
+
+    override fun setSpinner(adapter: ArrayAdapter<String>) {
+        spinner.adapter = adapter
     }
 }
