@@ -13,4 +13,5 @@
     <string name="detail_activity">Match Detail</string>
     <string name="favorites">Favorites</string>
     <string name="next_match">Next Match</string>
+    <string name="last_match">Last Match</string>
 </resources>
