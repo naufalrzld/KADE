@@ -14,11 +14,13 @@ import android.widget.Spinner
 import com.naufalrzld.footballclub.model.Team
 import com.naufalrzld.footballmatchschedule.R
 import com.naufalrzld.footballmatchschedule.adapter.TeamsAdapter
+import com.naufalrzld.footballmatchschedule.detail.TeamDetailActivity
 
 import com.naufalrzld.footballmatchschedule.ui.TeamsUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.intentFor
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.toast
 
@@ -67,7 +69,7 @@ class TeamsFragment : Fragment(), TeamsView {
 
     override fun showTeams(teams: List<Team>) {
         adapter = TeamsAdapter(teams) {
-            toast(it.teamName!!)
+            startActivity(intentFor<TeamDetailActivity>())
         }
         rvTeams.adapter = adapter
     }

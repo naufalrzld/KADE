@@ -20,6 +20,10 @@
         </activity>
         <activity android:name=".detail.DetailActivity">
         </activity>
+        <activity android:name=".SplashScreenActivity">
+        </activity>
+        <activity android:name=".detail.TeamDetailActivity">
+        </activity>
     </application>
 
 </manifest>

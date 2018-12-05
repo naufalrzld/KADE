@@ -14,4 +14,6 @@
     <item name="list_team" type="id"/>
     <item name="team_name" type="id"/>
     <item name="team_badge" type="id"/>
+    <item name="timeLastMatch" type="id"/>
+    <item name="timeNextMatch" type="id"/>
 </resources>

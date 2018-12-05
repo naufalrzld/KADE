@@ -25,6 +25,14 @@ class LastMatchItemUI: AnkoComponent<ViewGroup> {
                     bottomMargin = dip(8)
                 }
 
+                textView {
+                    id = R.id.timeLastMatch
+                    textColor = R.color.colorPrimary
+                    text = "20:00"
+                }.lparams(width = wrapContent) {
+                    bottomMargin = dip(8)
+                }
+
                 linearLayout {
                     lparams(width = matchParent, height = wrapContent)
                     orientation = LinearLayout.HORIZONTAL

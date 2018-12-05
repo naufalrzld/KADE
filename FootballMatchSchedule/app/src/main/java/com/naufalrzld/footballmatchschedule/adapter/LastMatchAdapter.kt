@@ -24,6 +24,7 @@ class LastMatchAdapter(private val events: List<MatchModel>,
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val date: TextView = view.find(dateLastMatch)
+        private val time: TextView = view.find(timeLastMatch)
         private val homeScore: TextView = view.find(score1)
         private val homeTeam: TextView = view.find(team1)
         private val awayScore: TextView = view.find(score2)
@@ -31,6 +32,7 @@ class LastMatchAdapter(private val events: List<MatchModel>,
 
         fun bind(event: MatchModel, listener: (MatchModel) -> Unit) {
             date.text = event.strDate
+            time.text = event.strTime
             homeScore.text = event.intHomeScore
             homeTeam.text = event.strHomeTeam
             awayScore.text = event.intAwayScore

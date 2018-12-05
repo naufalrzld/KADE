@@ -35,6 +35,7 @@ class LastMatchPresenter(private val view : MatchView) {
                             for (i in 0 until count!!) {
                                 val idEvent = eventModel.get(i).idEvent
                                 val strDate = eventModel.get(i).strDate
+                                val strTime = eventModel.get(i).strTime
                                 val strHomeTeam = eventModel.get(i).strHomeTeam
                                 val intHomeScore = eventModel.get(i).intHomeScore
                                 val strAwayTeam = eventModel.get(i).strAwayTeam
@@ -52,7 +53,7 @@ class LastMatchPresenter(private val view : MatchView) {
 
                                 events.add(
                                     MatchModel(null, idEvent, strHomeTeam, intHomeScore, strAwayTeam, intAwayScore, strDate,
-                                        strHomeLineupGoalkeeper, strAwayLineupGoalkeeper, strHomeLineupDefense,
+                                        strTime, strHomeLineupGoalkeeper, strAwayLineupGoalkeeper, strHomeLineupDefense,
                                         strAwayLineupDefense, strHomeLineupMidfield, strAwayLineupMidfield, strHomeLineupForward,
                                         strAwayLineupForward, strHomeLineupSubstitutes, strAwayLineupSubstitutes)
                                 )

@@ -25,11 +25,13 @@ class NextMatchAdapter(private val context: Context, private val events: List<Ma
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val date: TextView = view.find(dateNextMatch)
+        private val time: TextView = view.find(timeNextMatch)
         private val homeTeam: TextView = view.find(team1)
         private val awayTeam: TextView = view.find(team2)
 
         fun bind(event: MatchModel, listener: (MatchModel) -> Unit) {
             date.text = event.strDate
+            time.text = event.strTime
             homeTeam.text = event.strHomeTeam
             awayTeam.text = event.strAwayTeam
 

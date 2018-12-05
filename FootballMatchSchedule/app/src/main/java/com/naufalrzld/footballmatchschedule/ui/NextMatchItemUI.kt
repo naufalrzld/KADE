@@ -24,6 +24,14 @@ class NextMatchItemUI: AnkoComponent<ViewGroup> {
                     bottomMargin = dip(8)
                 }
 
+                textView {
+                    id = R.id.timeNextMatch
+                    textColor = R.color.colorPrimary
+                    text = "20:00"
+                }.lparams(width = wrapContent) {
+                    bottomMargin = dip(8)
+                }
+
                 linearLayout {
                     lparams(width = matchParent, height = wrapContent)
                     orientation = LinearLayout.HORIZONTAL

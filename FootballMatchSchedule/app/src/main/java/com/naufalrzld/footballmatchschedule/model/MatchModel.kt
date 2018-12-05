@@ -26,6 +26,9 @@ data class MatchModel(
     @SerializedName("strDate")
     val strDate: String?,
 
+    @SerializedName("strTime")
+    val strTime: String?,
+
     @SerializedName("strHomeLineupGoalkeeper")
     val strHomeLineupGoalkeeper: String?,
 
