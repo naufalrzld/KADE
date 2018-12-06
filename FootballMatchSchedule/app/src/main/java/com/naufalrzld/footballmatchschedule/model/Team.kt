@@ -1,7 +1,10 @@
 package com.naufalrzld.footballclub.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Team(
     @SerializedName("idTeam")
     var teamId: String? = null,
@@ -20,4 +23,4 @@ data class Team(
 
     @SerializedName("strDescriptionEN")
     var teamDescription: String? = null
-)
+) : Parcelable

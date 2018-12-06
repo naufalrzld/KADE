@@ -69,7 +69,7 @@ class TeamsFragment : Fragment(), TeamsView {
 
     override fun showTeams(teams: List<Team>) {
         adapter = TeamsAdapter(teams) {
-            startActivity(intentFor<TeamDetailActivity>())
+            startActivity(intentFor<TeamDetailActivity>("data" to it))
         }
         rvTeams.adapter = adapter
     }
