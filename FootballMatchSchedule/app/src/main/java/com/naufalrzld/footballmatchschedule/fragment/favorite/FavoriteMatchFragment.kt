@@ -10,13 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.naufalrzld.footballmatchschedule.R
 import com.naufalrzld.footballmatchschedule.adapter.LastMatchAdapter
-import com.naufalrzld.footballmatchschedule.detail.DetailActivity
+import com.naufalrzld.footballmatchschedule.detail.match.DetailMatchActivity
 import com.naufalrzld.footballmatchschedule.model.MatchModel
 import com.naufalrzld.footballmatchschedule.ui.MatchFragmentUI
-import com.naufalrzld.footballmatchschedule.utils.database
 import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.db.classParser
-import org.jetbrains.anko.db.select
 import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.intentFor
@@ -60,7 +57,7 @@ class FavoriteMatchFragment : Fragment(), FavoriteMatchView {
 
     override fun showFavorites(events: List<MatchModel>) {
         adapter = LastMatchAdapter(events) {
-            startActivity(intentFor<DetailActivity>("data" to it))
+            startActivity(intentFor<DetailMatchActivity>("data" to it))
         }
         rvList.adapter = adapter
     }

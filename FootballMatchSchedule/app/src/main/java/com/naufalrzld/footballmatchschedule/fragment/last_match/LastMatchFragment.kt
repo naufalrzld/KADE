@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.naufalrzld.footballmatchschedule.R
 import com.naufalrzld.footballmatchschedule.R.id.*
-import com.naufalrzld.footballmatchschedule.detail.DetailActivity
+import com.naufalrzld.footballmatchschedule.detail.match.DetailMatchActivity
 import com.naufalrzld.footballmatchschedule.adapter.LastMatchAdapter
 import com.naufalrzld.footballmatchschedule.fragment.MatchView
 import com.naufalrzld.footballmatchschedule.model.MatchModel
@@ -70,7 +70,7 @@ class LastMatchFragment : Fragment(), MatchView {
 
     override fun showData(data: List<MatchModel>) {
         adapter = LastMatchAdapter(data) {
-            startActivity(intentFor<DetailActivity>("data" to it))
+            startActivity(intentFor<DetailMatchActivity>("data" to it))
         }
         rvList.adapter = adapter
     }

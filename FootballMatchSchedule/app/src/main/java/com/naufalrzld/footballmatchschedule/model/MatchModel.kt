@@ -68,6 +68,7 @@ data class MatchModel(
         const val AWAY_TEAM: String = "AWAY_TEAM"
         const val AWAY_SCORE: String = "AWAY_SCORE"
         const val EVENT_DATE: String = "EVENT_DATE"
+        const val EVENT_TIME: String = "EVENT_TIME"
         const val HOME_GOAL_KEEPER: String = "HOME_GOAL_KEEPER"
         const val AWAY_GOAL_KEEPER: String = "AWAY_GOAL_KEEPER"
         const val HOME_DEFENSE: String = "HOME_DEFENSE"

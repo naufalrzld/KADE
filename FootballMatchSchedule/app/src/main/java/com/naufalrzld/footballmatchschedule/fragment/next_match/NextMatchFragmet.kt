@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.naufalrzld.footballmatchschedule.R
-import com.naufalrzld.footballmatchschedule.detail.DetailActivity
+import com.naufalrzld.footballmatchschedule.detail.match.DetailMatchActivity
 import com.naufalrzld.footballmatchschedule.R.id.*
 import com.naufalrzld.footballmatchschedule.adapter.NextMatchAdapter
 import com.naufalrzld.footballmatchschedule.fragment.MatchView
@@ -64,7 +64,7 @@ class NextMatchFragmet : Fragment(), MatchView {
 
     override fun showData(data: List<MatchModel>) {
         adapter = NextMatchAdapter(context!!, data) {
-            startActivity(intentFor<DetailActivity>("data" to it))
+            startActivity(intentFor<DetailMatchActivity>("data" to it))
         }
 
         rvList.adapter = adapter

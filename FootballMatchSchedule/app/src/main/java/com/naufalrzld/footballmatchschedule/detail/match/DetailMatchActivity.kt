@@ -1,4 +1,4 @@
-package com.naufalrzld.footballmatchschedule.detail
+package com.naufalrzld.footballmatchschedule.detail.match
 
 import android.database.sqlite.SQLiteConstraintException
 import android.support.v7.app.AppCompatActivity
@@ -22,9 +22,9 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.toast
 
-class DetailActivity : AppCompatActivity(), DetailView {
+class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
 
-    private lateinit var presenter: DetailPresenter
+    private lateinit var presenter: DetailMatchPresenter
 
     private lateinit var match: MatchModel
     private var menuItem: Menu? = null
@@ -50,7 +50,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
 
         favoriteState()
 
-        presenter = DetailPresenter(this)
+        presenter = DetailMatchPresenter(this)
         presenter.getEventDetail(matchModel)
     }
 
@@ -138,6 +138,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
                     MatchModel.AWAY_TEAM to match.strAwayTeam,
                     MatchModel.AWAY_SCORE to match.intAwayScore,
                     MatchModel.EVENT_DATE to match.strDate,
+                    MatchModel.EVENT_TIME to match.strTime,
                     MatchModel.HOME_GOAL_KEEPER to match.strHomeLineupGoalkeeper,
                     MatchModel.AWAY_GOAL_KEEPER to match.strAwayLineupGoalkeeper,
                     MatchModel.HOME_DEFENSE to match.strHomeLineupDefense,

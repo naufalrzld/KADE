@@ -1,4 +1,4 @@
-package com.naufalrzld.footballmatchschedule.detail
+package com.naufalrzld.footballmatchschedule.detail.match
 
 import android.util.Log
 import com.naufalrzld.footballmatchschedule.model.MatchModel
@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailPresenter(private val view: DetailView) {
+class DetailMatchPresenter(private val view: DetaiMatchlView) {
 
     fun getEventDetail(matchModel: MatchModel?) {
         if (matchModel != null) {

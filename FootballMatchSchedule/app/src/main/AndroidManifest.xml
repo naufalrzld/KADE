@@ -18,11 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".detail.DetailActivity">
+        <activity android:name=".detail.match.DetailMatchActivity">
         </activity>
         <activity android:name=".SplashScreenActivity">
         </activity>
-        <activity android:name=".detail.TeamDetailActivity">
+        <activity android:name=".detail.team.TeamDetailActivity">
+        </activity>
+        <activity android:name=".detail.player.DetailPlayerActivity">
         </activity>
     </application>
 
