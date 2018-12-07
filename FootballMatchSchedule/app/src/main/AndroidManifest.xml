@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".detail.player.DetailPlayerActivity">
         </activity>
+        <activity android:name=".search.SearchMatchActivity">
+        </activity>
     </application>
 
 </manifest>

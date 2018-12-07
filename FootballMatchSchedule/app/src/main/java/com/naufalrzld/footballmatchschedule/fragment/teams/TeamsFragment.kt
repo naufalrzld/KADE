@@ -23,6 +23,7 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.intentFor
 import org.jetbrains.anko.support.v4.onRefresh
 
+
 /**
  * A simple [Fragment] subclass.
  *
@@ -91,9 +92,19 @@ class TeamsFragment : Fragment(), TeamsView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.main_menu, menu)
+        inflater?.inflate(R.menu.search_team_menu, menu)
         val searchView = MenuItemCompat.getActionView(menu?.findItem(R.id.search)) as SearchView
         searchView.queryHint = resources.getString(R.string.search_hint)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                presenter.searchTeam(newText)
+                return true
+            }
+        })
         super.onCreateOptionsMenu(menu, inflater)
     }
 }

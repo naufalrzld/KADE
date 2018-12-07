@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteConstraintException
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
@@ -21,6 +22,9 @@ import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.toast
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
 
@@ -47,6 +51,17 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
         } else {
             id = "0"
         }
+
+        /*val dateFormatGmt = SimpleDateFormat("dd/MM/yy HH:mm:ss+HH:mm")
+
+        try {
+            val d = dateFormatGmt.parse(matchModel.strDate + " " + matchModel.strTime)
+            dateFormatGmt.timeZone = TimeZone.getTimeZone("GMT + 7")
+            val a = dateFormatGmt.format(d)
+            Log.d("tanggal", a)
+        } catch (ex: ParseException) {
+            Log.d("Exception", ex.getLocalizedMessage())
+        }*/
 
         favoriteState()
 
@@ -85,10 +100,15 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
 
     override fun showData(data: MatchModel) {
         val date = data.strDate
+        val time = data.strTime
         val homeTeam = data.strHomeTeam
         val homeScore = data.intHomeScore
         val awayTeam = data.strAwayTeam
         val awayScore = data.intAwayScore
+        val homeShot = data.intHomeShots
+        val awayShot = data.intAwayShots
+        val goalDetailHome = data.strHomeGoalDetails?.replace(";", "\n")
+        val goalDetailAway = data.strAwayGoalDetails?.replace(";", "\n")
         val goalKeeperHome = data.strHomeLineupGoalkeeper?.replace("; ", "\n")
         val goalKeeperAway = data.strAwayLineupGoalkeeper?.replace("; ", "\n")
         val defenseHome = data.strHomeLineupDefense?.replace("; ", "\n")
@@ -101,10 +121,15 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
         val substitutesAway = data.strAwayLineupSubstitutes?.replace("; ", "\n")
 
         tv_date.text = date
+        tv_time.text = time
         tv_team_home.text = homeTeam
         tv_score_home.text = homeScore
         tv_team_away.text = awayTeam
         tv_score_away.text = awayScore
+        tv_goal_detail_home.text = goalDetailHome
+        tv_goal_detail_away.text = goalDetailAway
+        tv_shot_home.text = homeShot
+        tv_shot_away.text = awayShot
         tv_goal_keeper_home.text = goalKeeperHome
         tv_goal_keeper_away.text = goalKeeperAway
         tv_defense_home.text = defenseHome

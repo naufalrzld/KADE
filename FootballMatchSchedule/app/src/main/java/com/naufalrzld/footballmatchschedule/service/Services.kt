@@ -1,10 +1,7 @@
 package com.naufalrzld.footballmatchschedule.service
 
 import com.naufalrzld.footballclub.model.TeamResponse
-import com.naufalrzld.footballmatchschedule.model.LeagueResponse
-import com.naufalrzld.footballmatchschedule.model.MatchResponse
-import com.naufalrzld.footballmatchschedule.model.PlayerResponse
-import com.naufalrzld.footballmatchschedule.model.TeamLogoResponse
+import com.naufalrzld.footballmatchschedule.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -30,4 +27,7 @@ interface Services {
 
     @GET("/api/v1/json/1/searchteams.php")
     fun APISearchTeam(@Query("t") team: String): Call<TeamResponse>
+
+    @GET("/api/v1/json/1/searchevents.php")
+    fun APISearchMatch(@Query("e") event: String): Call<SearchMatchResponse>
 }

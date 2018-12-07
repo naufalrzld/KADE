@@ -4,14 +4,15 @@ package com.naufalrzld.footballmatchschedule.fragment.match_main
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
-import android.support.v4.view.MenuItemCompat
 import android.support.v4.view.ViewPager
 import android.view.*
-import android.widget.SearchView
 
 import com.naufalrzld.footballmatchschedule.R
+import com.naufalrzld.footballmatchschedule.R.id.search
 import com.naufalrzld.footballmatchschedule.adapter.ViewPagerAdapter
+import com.naufalrzld.footballmatchschedule.search.SearchMatchActivity
 import org.jetbrains.anko.find
+import org.jetbrains.anko.support.v4.intentFor
 
 /**
  * A simple [Fragment] subclass.
@@ -50,9 +51,14 @@ class MatchFragment : Fragment(), MatchFragmentView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.main_menu, menu)
-        val searchView = MenuItemCompat.getActionView(menu?.findItem(R.id.search)) as SearchView
-        searchView.queryHint = resources.getString(R.string.search_hint)
+        inflater?.inflate(R.menu.search_event_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            search -> startActivity(intentFor<SearchMatchActivity>())
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

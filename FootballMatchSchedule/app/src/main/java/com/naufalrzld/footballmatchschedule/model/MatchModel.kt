@@ -23,11 +23,23 @@ data class MatchModel(
     @SerializedName("intAwayScore")
     val intAwayScore: String?,
 
+    @SerializedName("intHomeShots")
+    val intHomeShots: String?,
+
+    @SerializedName("intAwayShots")
+    val intAwayShots: String?,
+
     @SerializedName("strDate")
     val strDate: String?,
 
     @SerializedName("strTime")
     val strTime: String?,
+
+    @SerializedName("strHomeGoalDetails")
+    val strHomeGoalDetails: String?,
+
+    @SerializedName("strAwayGoalDetails")
+    val strAwayGoalDetails: String?,
 
     @SerializedName("strHomeLineupGoalkeeper")
     val strHomeLineupGoalkeeper: String?,
@@ -67,8 +79,12 @@ data class MatchModel(
         const val HOME_SCORE: String = "HOME_SCORE"
         const val AWAY_TEAM: String = "AWAY_TEAM"
         const val AWAY_SCORE: String = "AWAY_SCORE"
+        const val HOME_SHOT: String = "HOME_SHOT"
+        const val AWAY_SHOT: String = "AWAY_SHOT"
         const val EVENT_DATE: String = "EVENT_DATE"
         const val EVENT_TIME: String = "EVENT_TIME"
+        const val HOME_GOAL_DETAIL: String = "HOME_GOAL_DETAIL"
+        const val AWAY_GOAL_DETAIL: String = "AWAY_GOAL_DETAIL"
         const val HOME_GOAL_KEEPER: String = "HOME_GOAL_KEEPER"
         const val AWAY_GOAL_KEEPER: String = "AWAY_GOAL_KEEPER"
         const val HOME_DEFENSE: String = "HOME_DEFENSE"
