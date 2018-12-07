@@ -23,7 +23,6 @@ class FavoriteMatchFragment : Fragment(), FavoriteMatchView {
 
     private lateinit var swipeRefresh: SwipeRefreshLayout
 
-    private var events: MutableList<MatchModel> = mutableListOf()
     private lateinit var adapter: LastMatchAdapter
     private lateinit var rvList: RecyclerView
     private lateinit var presenter: FavoriteMatchPresenter

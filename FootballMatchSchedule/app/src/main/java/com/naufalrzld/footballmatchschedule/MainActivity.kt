@@ -4,13 +4,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.naufalrzld.footballmatchschedule.R.id.*
-import com.naufalrzld.footballmatchschedule.fragment.favorite.FavoriteMatchFragment
+import com.naufalrzld.footballmatchschedule.fragment.favorite.FavoriteMainFragment
 import com.naufalrzld.footballmatchschedule.fragment.match_main.MatchFragment
-import com.naufalrzld.footballmatchschedule.fragment.next_match.NextMatchFragmet
 import com.naufalrzld.footballmatchschedule.fragment.teams.TeamsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
+
+    private var currFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
-            val currFragment = supportFragmentManager.findFragmentById(R.id.container)
+            currFragment = supportFragmentManager.findFragmentById(R.id.container)
             when (item.itemId) {
                 match -> {
                     if (currFragment !is MatchFragment) {
@@ -34,9 +36,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 favorites -> {
-                    if (currFragment !is FavoriteMatchFragment) {
-                        loadFragment(FavoriteMatchFragment())
-                        setToolbarTitle("Favorite Match")
+                    if (currFragment !is FavoriteMainFragment) {
+                        loadFragment(FavoriteMainFragment())
+                        setToolbarTitle("Favorite")
                     }
                 }
             }

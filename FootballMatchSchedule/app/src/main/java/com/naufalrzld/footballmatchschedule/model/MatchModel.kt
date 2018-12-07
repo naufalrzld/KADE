@@ -60,7 +60,7 @@ data class MatchModel(
     val strAwayLineupSubstitutes: String?
 ) : Parcelable {
     companion object {
-        const val TABLE_FAVORITE: String = "TABLE_FAVORITE"
+        const val TABLE_MATCH_FAVORITE: String = "TABLE_MATCH_FAVORITE"
         const val ID: String = "ID_"
         const val EVENT_ID: String = "EVENT_ID"
         const val HOME_TEAM: String = "HOME_TEAM"

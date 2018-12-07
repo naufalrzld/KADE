@@ -131,7 +131,7 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
         try {
             database.use {
                 insert(
-                    MatchModel.TABLE_FAVORITE,
+                    MatchModel.TABLE_MATCH_FAVORITE,
                     MatchModel.EVENT_ID to match.idEvent,
                     MatchModel.HOME_TEAM to match.strHomeTeam,
                     MatchModel.HOME_SCORE to match.intHomeScore,
@@ -157,7 +157,7 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
     private fun removeFromFavorite(){
         try {
             database.use {
-                delete(MatchModel.TABLE_FAVORITE, "(EVENT_ID = {id})",
+                delete(MatchModel.TABLE_MATCH_FAVORITE, "(EVENT_ID = {id})",
                     "id" to id)
             }
             toast( "Removed to favorite")
@@ -168,7 +168,7 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
 
     private fun favoriteState(){
         database.use {
-            val result = select(MatchModel.TABLE_FAVORITE)
+            val result = select(MatchModel.TABLE_MATCH_FAVORITE)
                 .whereArgs("(EVENT_ID = {id})",
                     "id" to id)
             val favorite = result.parseList(classParser<MatchModel>())

@@ -27,4 +27,6 @@
     <string name="height_m">Height (m)</string>
     <string name="detail_player_activity">Detail Player</string>
     <string name="detail_team_activity">Detail Team</string>
+    <string name="menu_title_search">Search</string>
+    <string name="search_hint">Search</string>
 </resources>

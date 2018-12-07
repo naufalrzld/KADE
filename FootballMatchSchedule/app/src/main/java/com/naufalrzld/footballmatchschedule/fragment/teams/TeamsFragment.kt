@@ -3,13 +3,13 @@ package com.naufalrzld.footballmatchschedule.fragment.teams
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.SearchView
 import android.widget.Spinner
 import com.naufalrzld.footballclub.model.Team
 import com.naufalrzld.footballmatchschedule.R
@@ -36,6 +36,11 @@ class TeamsFragment : Fragment(), TeamsView {
     private lateinit var adapter: TeamsAdapter
     private lateinit var presenter: TeamsPresenter
     private lateinit var leagueName: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,5 +88,12 @@ class TeamsFragment : Fragment(), TeamsView {
 
     override fun setSpinner(adapter: ArrayAdapter<String>) {
         spinner.adapter = adapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.main_menu, menu)
+        val searchView = MenuItemCompat.getActionView(menu?.findItem(R.id.search)) as SearchView
+        searchView.queryHint = resources.getString(R.string.search_hint)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

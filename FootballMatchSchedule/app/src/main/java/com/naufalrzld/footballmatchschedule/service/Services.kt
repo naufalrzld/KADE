@@ -27,4 +27,7 @@ interface Services {
 
     @GET("/api/v1/json/1/searchplayers.php")
     fun APIPlayer(@Query("t") team: String): Call<PlayerResponse>
+
+    @GET("/api/v1/json/1/searchteams.php")
+    fun APISearchTeam(@Query("t") team: String): Call<TeamResponse>
 }
