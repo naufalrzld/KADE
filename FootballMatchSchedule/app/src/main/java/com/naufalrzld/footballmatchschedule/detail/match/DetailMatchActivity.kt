@@ -1,5 +1,6 @@
 package com.naufalrzld.footballmatchschedule.detail.match
 
+import android.annotation.SuppressLint
 import android.database.sqlite.SQLiteConstraintException
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ import com.naufalrzld.footballmatchschedule.R.menu.detail_menu
 import com.naufalrzld.footballmatchschedule.R.string.detail_activity
 import com.naufalrzld.footballmatchschedule.model.MatchModel
 import com.naufalrzld.footballmatchschedule.utils.database
+import com.naufalrzld.footballmatchschedule.utils.toGMTFormat
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -98,9 +100,24 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
         Glide.with(baseContext).load(imageUrl).into(img_team_away)
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun showData(data: MatchModel) {
-        val date = data.strDate
-        val time = data.strTime
+        var date: String? = data.dateEvent
+        if (data.strDate != null) {
+            date = data.strDate
+        }
+
+        val dateTime = toGMTFormat(date, data.strTime)
+
+        val datePattern = "dd/MM/yyyy"
+        val timePattern = "HH:mm"
+
+        val sdfDate = SimpleDateFormat(datePattern)
+        val strDate = sdfDate.format(dateTime)
+
+        val sdfTime = SimpleDateFormat(timePattern)
+        val strTime = sdfTime.format(dateTime)
+
         val homeTeam = data.strHomeTeam
         val homeScore = data.intHomeScore
         val awayTeam = data.strAwayTeam
@@ -120,8 +137,8 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
         val substitutesHome = data.strHomeLineupSubstitutes?.replace("; ", "\n")
         val substitutesAway = data.strAwayLineupSubstitutes?.replace("; ", "\n")
 
-        tv_date.text = date
-        tv_time.text = time
+        tv_date.text = strDate
+        tv_time.text = strTime
         tv_team_home.text = homeTeam
         tv_score_home.text = homeScore
         tv_team_away.text = awayTeam
@@ -162,8 +179,13 @@ class DetailMatchActivity : AppCompatActivity(), DetaiMatchlView {
                     MatchModel.HOME_SCORE to match.intHomeScore,
                     MatchModel.AWAY_TEAM to match.strAwayTeam,
                     MatchModel.AWAY_SCORE to match.intAwayScore,
+                    MatchModel.HOME_SHOT to match.intHomeShots,
+                    MatchModel.AWAY_SHOT to match.intAwayShots,
+                    MatchModel.DATE_EVENT to match.dateEvent,
                     MatchModel.EVENT_DATE to match.strDate,
                     MatchModel.EVENT_TIME to match.strTime,
+                    MatchModel.HOME_GOAL_DETAIL to match.strHomeGoalDetails,
+                    MatchModel.AWAY_GOAL_DETAIL to match.strAwayGoalDetails,
                     MatchModel.HOME_GOAL_KEEPER to match.strHomeLineupGoalkeeper,
                     MatchModel.AWAY_GOAL_KEEPER to match.strAwayLineupGoalkeeper,
                     MatchModel.HOME_DEFENSE to match.strHomeLineupDefense,

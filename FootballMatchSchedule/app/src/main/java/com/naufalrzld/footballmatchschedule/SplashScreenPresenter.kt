@@ -23,7 +23,7 @@ class SplashScreenPresenter(private val context: Context) {
                     if (response.isSuccessful) {
                         val data = response.body()
                         if (data != null) {
-                            sharedPreference.setLeague<LeagueResponse>(data)
+                            sharedPreference.storeData("league", data)
                         }
                     }
                 }

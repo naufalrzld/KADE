@@ -8,10 +8,10 @@ import retrofit2.http.Query
 
 interface Services {
     @GET("/api/v1/json/1/eventspastleague.php")
-    fun APILastEvents(@Query("id") league: Int): Call<MatchResponse>
+    fun APILastEvents(@Query("id") league: String): Call<MatchResponse>
 
     @GET("/api/v1/json/1/eventsnextleague.php")
-    fun APINextEvents(@Query("id") league: Int): Call<MatchResponse>
+    fun APINextEvents(@Query("id") league: String): Call<MatchResponse>
 
     @GET("https://www.thesportsdb.com/api/v1/json/1/searchteams.php")
     fun APITeams(@Query("t") league: String): Call<TeamLogoResponse>

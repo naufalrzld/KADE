@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.Menu
 import com.naufalrzld.footballmatchschedule.R
-import com.naufalrzld.footballmatchschedule.adapter.NextMatchAdapter
 import com.naufalrzld.footballmatchschedule.detail.match.DetailMatchActivity
 import com.naufalrzld.footballmatchschedule.model.MatchModel
 import kotlinx.android.synthetic.main.activity_search_match.*
@@ -14,12 +13,13 @@ import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.widget.SearchView
+import com.naufalrzld.footballmatchschedule.adapter.SearchMatchAdapter
 
 
 class SearchMatchActivity : AppCompatActivity(), SearchMatchView, SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var presenter: SearchMatchPresenter
-    private lateinit var adapter: NextMatchAdapter
+    private lateinit var adapter: SearchMatchAdapter
 
     private lateinit var event: String
 
@@ -50,7 +50,7 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView, SwipeRefreshLa
     }
 
     override fun showData(event: List<MatchModel>) {
-        adapter = NextMatchAdapter(this, event) {
+        adapter = SearchMatchAdapter(event) {
             startActivity(intentFor<DetailMatchActivity>("data" to it))
         }
 

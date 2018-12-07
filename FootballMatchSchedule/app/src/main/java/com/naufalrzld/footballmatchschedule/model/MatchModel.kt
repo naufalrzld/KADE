@@ -29,6 +29,9 @@ data class MatchModel(
     @SerializedName("intAwayShots")
     val intAwayShots: String?,
 
+    @SerializedName("dateEvent")
+    val dateEvent: String?,
+
     @SerializedName("strDate")
     val strDate: String?,
 
@@ -83,6 +86,7 @@ data class MatchModel(
         const val AWAY_SHOT: String = "AWAY_SHOT"
         const val EVENT_DATE: String = "EVENT_DATE"
         const val EVENT_TIME: String = "EVENT_TIME"
+        const val DATE_EVENT: String = "DATE_EVENT"
         const val HOME_GOAL_DETAIL: String = "HOME_GOAL_DETAIL"
         const val AWAY_GOAL_DETAIL: String = "AWAY_GOAL_DETAIL"
         const val HOME_GOAL_KEEPER: String = "HOME_GOAL_KEEPER"

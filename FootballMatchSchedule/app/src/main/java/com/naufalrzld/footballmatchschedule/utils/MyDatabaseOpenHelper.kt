@@ -31,6 +31,7 @@ class MyDatabaseOpenHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Favorit
             MatchModel.AWAY_SCORE to TEXT,
             MatchModel.HOME_SHOT to TEXT,
             MatchModel.AWAY_SHOT to TEXT,
+            MatchModel.DATE_EVENT to TEXT,
             MatchModel.EVENT_DATE to TEXT,
             MatchModel.EVENT_TIME to TEXT,
             MatchModel.HOME_GOAL_DETAIL to TEXT,

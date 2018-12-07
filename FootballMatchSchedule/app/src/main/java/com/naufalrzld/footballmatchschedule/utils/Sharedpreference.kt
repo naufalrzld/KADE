@@ -3,22 +3,36 @@ package com.naufalrzld.footballmatchschedule.utils
 import com.google.gson.Gson
 import android.content.Context
 
+
+
+
+
 class Sharedpreference(private val context: Context) {
-    private val LEAGUE = "league"
-    private val sharedPreferences = context.getSharedPreferences("league_pref", Context.MODE_PRIVATE)
+    private val PREF_NAME = "Session"
+    private val gson = Gson()
 
-    private val editor = sharedPreferences.edit()
+    val sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
 
-    fun <T> setLeague(value: Any) {
-        val gson = Gson()
+    fun storeData(key: String, value: Any) {
+        val editor = sharedPreferences.edit()
         val json = gson.toJson(value)
-
-        editor.putString(LEAGUE, json)
-        editor.commit()
+        editor.putString(key, json)
+        editor.apply()
     }
 
-    fun <T> getLeague(`object`: Class<T>): T {
-        val json = sharedPreferences.getString(LEAGUE, null)
-        return Gson().fromJson(json, `object`)
+    fun checkIfDataExists(key: String): Boolean {
+        return sharedPreferences.contains(key)
+    }
+
+    fun <T> getObjectData(key: String, `object`: Class<T>): T {
+        val json = sharedPreferences.getString(key, null)
+        return gson.fromJson(json, `object`)
+    }
+
+    fun clearAllData() {
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
     }
 }
